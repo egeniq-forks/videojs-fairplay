@@ -194,7 +194,12 @@ class Html5Fairplay {
 
     const { keySystem } = this.protection_;
 
-    const contentId = getHostnameFromURI(arrayToString(event.initData));
+    let contentId = "";
+    if (arrayToString(event.initData).split("//").length == 2) {
+      contentId = arrayToString(event.initData).split("//")[1];
+    } else {
+      contentId = getHostnameFromURI(arrayToString(event.initData));
+    }
 
     const initData = concatInitDataIdAndCertificate(event.initData, contentId, certificate);
 
