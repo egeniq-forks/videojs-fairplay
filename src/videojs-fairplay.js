@@ -278,7 +278,7 @@ videojs.fairplaySourceHandler.canPlayType = function canPlayType(type) {
   return '';
 };
 
-if (window.MediaSource) {
+if (typeof(window.WebKitMediaKeys) !== 'undefined') {
   videojs.getComponent('Html5').registerSourceHandler(videojs.fairplaySourceHandler(), 0);
 }
 
